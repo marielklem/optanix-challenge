@@ -1,0 +1,30 @@
+{
+  "name": "optanix-challenge",
+  "version": "1.0.0",
+  "description": "",
+  "main": "models.js",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "chai": "^4.2.0",
+    "chai-http": "^4.3.0",
+    "express": "^4.17.0",
+    "mongoose": "^5.5.9"
+  },
+  "devDependencies": {
+    "mocha": "^6.1.4"
+  },
+  "scripts": {
+    "test": "mocha",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/marielklem/optanix-challenge.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/marielklem/optanix-challenge/issues"
+  },
+  "homepage": "https://github.com/marielklem/optanix-challenge#readme"
+}
