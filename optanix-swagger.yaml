@@ -1,0 +1,94 @@
+swagger: '2.0'
+info:
+  title: Optanix-Challenge
+  description: An API with two endpoints each of which accepts an HTTP POST with a JSON payload.
+  version: 1.0.0
+schemes:
+  - http
+basePath: /v1
+produces:
+  - application/json
+paths:
+  /word:
+    post:
+      tags:
+        - Word Count Per Sentence
+      summary: word count for each sentence
+      description: |
+        Return individual sentences along with a word count for the sentence. For the purposes of this exercise, a sentence is any grouping of letters and words ending in a period, question mark or exclamation point. A word is text delimited by spaces.
+      parameters:
+        - name: key
+          in: query
+          description: an arbitrary user provided name
+          required: true
+          type: string
+        - name: sentences
+          in: query
+          description: as many sentences as a user would like
+          required: true
+          type: string
+      responses:
+        '200':
+          description: successful operation
+          schema:
+            $ref: '#/definitions/Word%20Count'
+        default:
+          description: Unexpected error
+          schema:
+            $ref: '#/definitions/Error'
+  /letter:
+    post:
+      tags:
+        - Total Letter Count
+      summary: total count of each letter in a sentence
+      description: |
+        For each case-insensitive letter, return the number of times that letter appears in the entire text. 
+      parameters:
+        - name: key
+          in: query
+          description: an arbitrary user provided name
+          required: true
+          type: string
+        - name: sentence
+          in: query
+          description: a sentence a user would like the letter count on
+          required: true
+          type: string
+      responses:
+        '200':
+          description: total letter count of sentence
+          schema:
+            $ref: '#/definitions/Letter%20Count'
+        default:
+          description: Unexpected error
+          schema:
+            $ref: '#/definitions/Error'
+definitions:
+  Word Count:
+    type: object
+    properties:
+      key:
+        type: object
+        description: as many sentences as the user would like
+        example: {this is a sentence: 4}
+  Letter Count:
+    type: object
+    properties:
+      key:
+        type: object
+        description: a sentence selected by user
+        example: {
+        "s": 1,
+        "e": 3,
+        "n": 2,
+        "t": 1,
+        "c": 1
+    }
+  Error:
+    type: object
+    properties:
+      code:
+        type: integer
+        format: int32
+      message:
+        type: string
